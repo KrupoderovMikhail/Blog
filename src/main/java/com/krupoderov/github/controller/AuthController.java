@@ -1,5 +1,6 @@
 package com.krupoderov.github.controller;
 
+import com.krupoderov.github.dto.LoginRequest;
 import com.krupoderov.github.dto.RegisterRequest;
 import com.krupoderov.github.service.AuthService;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,10 @@ public class AuthController {
     public ResponseEntity signup(@RequestBody RegisterRequest registerRequest) {
         authService.signup(registerRequest);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
     }
 }
